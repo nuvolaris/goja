@@ -97,11 +97,14 @@ func run() error {
 }
 
 func GojaMain() error {
+	logFlags := log.Flags()
+	log.SetFlags(0)
 	defer func() {
 		if x := recover(); x != nil {
 			debug.Stack()
 			panic(x)
 		}
+		log.SetFlags(logFlags)
 	}()
 	flag.Parse()
 	if *cpuprofile != "" {
