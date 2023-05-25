@@ -16,7 +16,9 @@ import (
 
 	"github.com/dop251/goja"
 	"github.com/dop251/goja_nodejs/console"
+	"github.com/dop251/goja_nodejs/process"
 	"github.com/dop251/goja_nodejs/require"
+	"github.com/dop251/goja_nodejs/url"
 )
 
 var cpuprofile = flag.String("cpuprofile", "", "write cpu profile to file")
@@ -61,17 +63,21 @@ func run() error {
 		filename = "<stdin>"
 	}
 
-	vm := goja.New()
-	vm.SetRandSource(newRandSource())
+	runtime := goja.New()
+	runtime.SetRandSource(newRandSource())
 
-	new(require.Registry).Enable(vm)
-	console.Enable(vm)
+	new(require.Registry).Enable(runtime)
+	console.Enable(runtime)
 
-	vm.Set("load", func(call goja.FunctionCall) goja.Value {
-		return load(vm, call)
+	process.Enable(runtime)
+	console.Enable(runtime)
+	url.Enable(runtime)
+
+	runtime.Set("load", func(call goja.FunctionCall) goja.Value {
+		return load(runtime, call)
 	})
 
-	vm.Set("readFile", func(name string) (string, error) {
+	runtime.Set("readFile", func(name string) (string, error) {
 		b, err := os.ReadFile(name)
 		if err != nil {
 			return "", err
@@ -81,7 +87,7 @@ func run() error {
 
 	if *timelimit > 0 {
 		time.AfterFunc(time.Duration(*timelimit)*time.Second, func() {
-			vm.Interrupt("timeout")
+			runtime.Interrupt("timeout")
 		})
 	}
 
@@ -91,7 +97,7 @@ func run() error {
 		return err
 	}
 	//log.Println("Running...")
-	_, err = vm.RunProgram(prg)
+	_, err = runtime.RunProgram(prg)
 	//log.Println("Finished.")
 	return err
 }
