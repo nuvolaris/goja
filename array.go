@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"strconv"
 
-	"github.com/dop251/goja/unistring"
+	"github.com/nuvolaris/goja/unistring"
 )
 
 type arrayIterObject struct {

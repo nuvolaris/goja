@@ -1,8 +1,9 @@
 package goja
 
 import (
-	"github.com/dop251/goja/unistring"
 	"reflect"
+
+	"github.com/nuvolaris/goja/unistring"
 )
 
 type PromiseState int
@@ -605,7 +606,7 @@ func (r *Runtime) wrapPromiseReaction(fObj *Object) func(interface{}) {
 // NewPromise creates and returns a Promise and resolving functions for it.
 //
 // WARNING: The returned values are not goroutine-safe and must not be called in parallel with VM running.
-// In order to make use of this method you need an event loop such as the one in goja_nodejs (https://github.com/dop251/goja_nodejs)
+// In order to make use of this method you need an event loop such as the one in goja_nodejs (https://github.com/nuvolaris/goja_nodejs)
 // where it can be used like this:
 //
 //	loop := NewEventLoop()

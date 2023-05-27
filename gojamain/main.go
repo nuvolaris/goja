@@ -14,11 +14,11 @@ import (
 	"runtime/pprof"
 	"time"
 
-	"github.com/dop251/goja"
-	"github.com/dop251/goja_nodejs/console"
-	"github.com/dop251/goja_nodejs/process"
-	"github.com/dop251/goja_nodejs/require"
-	"github.com/dop251/goja_nodejs/url"
+	"github.com/nuvolaris/goja"
+	"github.com/nuvolaris/goja_nodejs/console"
+	"github.com/nuvolaris/goja_nodejs/process"
+	"github.com/nuvolaris/goja_nodejs/require"
+	"github.com/nuvolaris/goja_nodejs/url"
 )
 
 var cpuprofile = flag.String("cpuprofile", "", "write cpu profile to file")

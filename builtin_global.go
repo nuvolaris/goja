@@ -2,7 +2,6 @@ package goja
 
 import (
 	"errors"
-	"github.com/dop251/goja/unistring"
 	"io"
 	"math"
 	"regexp"
@@ -10,6 +9,8 @@ import (
 	"strings"
 	"sync"
 	"unicode/utf8"
+
+	"github.com/nuvolaris/goja/unistring"
 )
 
 const hexUpper = "0123456789ABCDEF"
