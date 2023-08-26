@@ -16,6 +16,7 @@ import (
 
 	"github.com/nuvolaris/goja"
 	"github.com/nuvolaris/goja_nodejs/console"
+	"github.com/nuvolaris/goja_nodejs/nuv"
 	"github.com/nuvolaris/goja_nodejs/process"
 	"github.com/nuvolaris/goja_nodejs/require"
 	"github.com/nuvolaris/goja_nodejs/url"
@@ -68,7 +69,7 @@ func run() error {
 
 	new(require.Registry).Enable(runtime)
 	console.Enable(runtime)
-
+	nuv.Enable(runtime)
 	process.Enable(runtime)
 	console.Enable(runtime)
 	url.Enable(runtime)
