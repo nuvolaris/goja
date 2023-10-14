@@ -3,8 +3,8 @@ module github.com/nuvolaris/goja/gojamain
 go 1.20
 
 require (
-	github.com/nuvolaris/goja v0.0.0-20230826140625-f4c22086ede6
-	github.com/nuvolaris/goja_nodejs v0.0.0-20230826135643-676d5429636c
+	github.com/nuvolaris/goja v0.0.0-20231014102242-ba65db3f805b
+	github.com/nuvolaris/goja_nodejs v0.0.0-20231014102937-c453e3fed097
 )
 
 require (
